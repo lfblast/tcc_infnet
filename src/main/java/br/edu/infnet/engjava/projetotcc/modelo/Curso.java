@@ -1,11 +1,13 @@
 package br.edu.infnet.engjava.projetotcc.modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Curso {
@@ -15,7 +17,9 @@ public class Curso {
     private long id;
     private String codigoCurso;
     private String nomeCurso;
-    private List<Bloco> blocos;
+    
+    @OneToMany(mappedBy="curso")
+    private List<Bloco> blocos = new ArrayList<>();
     
     public Curso() {
     	

@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Modulo {
@@ -13,6 +15,10 @@ public class Modulo {
     private long id;
     private String codigoModulo;
     private String nomeModulo;
+    
+    @ManyToOne
+    @JoinColumn(name="bloco_id")
+    private Bloco bloco;
     
     public Modulo() {
     	
