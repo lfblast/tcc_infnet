@@ -2,8 +2,16 @@ package br.edu.infnet.engjava.projetotcc.modelo;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Avaliacao {
     
+	@Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id;
     private String codigoAvaliacao;
     private String objetivoAvaliacao;
@@ -13,8 +21,28 @@ public class Avaliacao {
     private Turma turma;
     private Questionario questionario;
     private EmailAbertura emailAbertura;
+    
+    
+    public Avaliacao() {
+    	
+    }
 
-    public long getId() {
+    public Avaliacao(long id, String codigoAvaliacao, String objetivoAvaliacao, LocalDate inicioAvaliacao,
+			LocalDate terminoAvaliacao, Aluno respondente, Turma turma, Questionario questionario,
+			EmailAbertura emailAbertura) {
+		super();
+		this.id = id;
+		this.codigoAvaliacao = codigoAvaliacao;
+		this.objetivoAvaliacao = objetivoAvaliacao;
+		this.inicioAvaliacao = inicioAvaliacao;
+		this.terminoAvaliacao = terminoAvaliacao;
+		this.respondente = respondente;
+		this.turma = turma;
+		this.questionario = questionario;
+		this.emailAbertura = emailAbertura;
+	}
+
+	public long getId() {
         return id;
     }
 

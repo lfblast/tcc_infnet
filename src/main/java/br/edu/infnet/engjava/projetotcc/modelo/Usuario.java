@@ -1,50 +1,72 @@
 package br.edu.infnet.engjava.projetotcc.modelo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Usuario {
-    
-    private long id;
-    private String nome;
-    private String cpf;
-    private String email;
-    private Credencial credencial;
+	
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+	private long id;
+	private String nome;
+	private String cpf;
+	private String email;
+	private Credencial credencial;
 
-    public long getId() {
-        return id;
-    }
+	
+	public Usuario() {
+		
+	}
 
-    public void setId(long id) {
-        this.id = id;
-    }
+	public Usuario(long id, String nome, String cpf, String email) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.email = email;
+	}
+	
 
-    public String getNome() {
-        return nome;
-    }
+	public long getId() {
+		return id;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public void setId(long id) {
+		this.id = id;
+	}
 
-    public String getCpf() {
-        return cpf;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getCpf() {
+		return cpf;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
-    public Credencial getCredencial() {
-        return credencial;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setCredencial(Credencial credencial) {
-        this.credencial = credencial;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Credencial getCredencial() {
+		return credencial;
+	}
+
+	public void setCredencial(Credencial credencial) {
+		this.credencial = credencial;
+	}
 }

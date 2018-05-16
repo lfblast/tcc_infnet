@@ -2,14 +2,36 @@ package br.edu.infnet.engjava.projetotcc.modelo;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Curso {
     
+	@Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id;
     private String codigoCurso;
     private String nomeCurso;
     private List<Bloco> blocos;
+    
+    public Curso() {
+    	
+    }
 
-    public long getId() {
+    public Curso(long id, String codigoCurso, String nomeCurso, List<Bloco> blocos) {
+		super();
+		this.id = id;
+		this.codigoCurso = codigoCurso;
+		this.nomeCurso = nomeCurso;
+		this.blocos = blocos;
+	}
+
+
+
+	public long getId() {
         return id;
     }
 
