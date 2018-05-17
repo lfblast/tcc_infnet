@@ -1,6 +1,7 @@
 package br.edu.infnet.engjava.projetotcc.modelo;
 
 import java.util.List;
+import javax.persistence.Column;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,26 +10,28 @@ import javax.persistence.Id;
 
 @Entity
 public class Questionario {
-    
-	@Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    
+    @Column(name="identificador")
     private String identificador;
+    
     private List<Questao> questoes;
 
     public Questionario() {
-    	
+
     }
-    
+
     public Questionario(long id, String identificador, List<Questao> questoes) {
-		super();
-		this.id = id;
-		this.identificador = identificador;
-		this.questoes = questoes;
-	}
+        super();
+        this.id = id;
+        this.identificador = identificador;
+        this.questoes = questoes;
+    }
 
-
-	public long getId() {
+    public long getId() {
         return id;
     }
 

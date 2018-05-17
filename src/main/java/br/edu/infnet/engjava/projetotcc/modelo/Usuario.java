@@ -1,72 +1,82 @@
 package br.edu.infnet.engjava.projetotcc.modelo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "usuario")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Usuario {
-	
+
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-	private long id;
-	private String nome;
-	private String cpf;
-	private String email;
-	private Credencial credencial;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;  
+    
+    @Column(nullable=false)
+    private String nome;
+    
+    @Column(nullable=false)
+    private String cpf;
+    
+    private String email;    
+    
+    private Credencial credencial;
 
-	
-	public Usuario() {
-		
-	}
+    public Usuario() {
 
-	public Usuario(long id, String nome, String cpf, String email) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.cpf = cpf;
-		this.email = email;
-	}
-	
+    }
 
-	public long getId() {
-		return id;
-	}
+    public Usuario(long id, String nome, String cpf, String email) {
+        super();
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+    }
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    public long getId() {
+        return id;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public void setId(long id) {
+        this.id = id;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public String getCpf() {
-		return cpf;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
+    public String getCpf() {
+        return cpf;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public Credencial getCredencial() {
-		return credencial;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setCredencial(Credencial credencial) {
-		this.credencial = credencial;
-	}
+    public Credencial getCredencial() {
+        return credencial;
+    }
+
+    public void setCredencial(Credencial credencial) {
+        this.credencial = credencial;
+    }
 }

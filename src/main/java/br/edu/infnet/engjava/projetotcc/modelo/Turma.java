@@ -2,6 +2,7 @@ package br.edu.infnet.engjava.projetotcc.modelo;
 
 import java.time.LocalDate;
 import java.util.List;
+import javax.persistence.Column;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,47 +11,44 @@ import javax.persistence.Id;
 
 @Entity
 public class Turma {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;    
     
-	@Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private long id;
-    private Modulo modulo;
+    @Column(name="professor_titular", nullable=false)
     private int professorTitular;
-    private LocalDate periodoInicio;
-    private LocalDate periodoFim;
-    private List<Aluno> alunos;
     
+    @Column(name="periodo_inicio", nullable=false)
+    private LocalDate periodoInicio;
+    
+    @Column(name="periodo_fim", nullable=false)
+    private LocalDate periodoFim;
+    
+    private Modulo modulo;
+    private List<Aluno> alunos;
+
     public Turma() {
-    	
+
     }
 
     public Turma(long id, Modulo modulo, int professorTitular, LocalDate periodoInicio, LocalDate periodoFim,
-			List<Aluno> alunos) {
-		super();
-		this.id = id;
-		this.modulo = modulo;
-		this.professorTitular = professorTitular;
-		this.periodoInicio = periodoInicio;
-		this.periodoFim = periodoFim;
-		this.alunos = alunos;
-	}
+            List<Aluno> alunos) {
+        super();
+        this.id = id;
+        this.modulo = modulo;
+        this.professorTitular = professorTitular;
+        this.periodoInicio = periodoInicio;
+        this.periodoFim = periodoFim;
+        this.alunos = alunos;
+    }
 
-
-
-	public long getId() {
+    public long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public Modulo getModulo() {
-        return modulo;
-    }
-
-    public void setModulo(Modulo modulo) {
-        this.modulo = modulo;
     }
 
     public int getProfessorTitular() {
@@ -83,5 +81,13 @@ public class Turma {
 
     public void setAlunos(List<Aluno> alunos) {
         this.alunos = alunos;
+    }
+    
+    public Modulo getModulo() {
+        return modulo;
+    }
+
+    public void setModulo(Modulo modulo) {
+        this.modulo = modulo;
     }
 }

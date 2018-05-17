@@ -1,5 +1,6 @@
 package br.edu.infnet.engjava.projetotcc.modelo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,31 +10,33 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Modulo {
-    
-	@Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    
+    @Column(name="codigo", nullable=false)
     private String codigoModulo;
+    
+    @Column(name="nome")
     private String nomeModulo;
-    
+
     @ManyToOne
-    @JoinColumn(name="bloco_id")
+    @JoinColumn(name = "bloco_id")
     private Bloco bloco;
-    
+
     public Modulo() {
-    	
+
     }
 
     public Modulo(long id, String codigoModulo, String nomeModulo) {
-		super();
-		this.id = id;
-		this.codigoModulo = codigoModulo;
-		this.nomeModulo = nomeModulo;
-	}
+        super();
+        this.id = id;
+        this.codigoModulo = codigoModulo;
+        this.nomeModulo = nomeModulo;
+    }
 
-
-
-	public long getId() {
+    public long getId() {
         return id;
     }
 
@@ -55,5 +58,13 @@ public class Modulo {
 
     public void setNomeModulo(String nomeModulo) {
         this.nomeModulo = nomeModulo;
+    }
+
+    public Bloco getBloco() {
+        return bloco;
+    }
+
+    public void setBloco(Bloco bloco) {
+        this.bloco = bloco;
     }
 }

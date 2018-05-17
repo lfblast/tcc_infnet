@@ -2,6 +2,7 @@ package br.edu.infnet.engjava.projetotcc.modelo;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,31 +12,33 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Curso {
-    
-	@Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    
+    @Column(name="codigo", nullable=false)
     private String codigoCurso;
+    
+    @Column(name="codigo", nullable=false)
     private String nomeCurso;
-    
-    @OneToMany(mappedBy="curso")
+
+    @OneToMany(mappedBy = "curso")
     private List<Bloco> blocos = new ArrayList<>();
-    
+
     public Curso() {
-    	
+
     }
 
     public Curso(long id, String codigoCurso, String nomeCurso, List<Bloco> blocos) {
-		super();
-		this.id = id;
-		this.codigoCurso = codigoCurso;
-		this.nomeCurso = nomeCurso;
-		this.blocos = blocos;
-	}
+        super();
+        this.id = id;
+        this.codigoCurso = codigoCurso;
+        this.nomeCurso = nomeCurso;
+        this.blocos = blocos;
+    }
 
-
-
-	public long getId() {
+    public long getId() {
         return id;
     }
 

@@ -1,7 +1,12 @@
 package br.edu.infnet.engjava.projetotcc.modelo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
 public class Administrador extends Usuario {
     
+    @Column(name="numero_cadastro", length=8, nullable=false)
     private String numeroCadastro;
 
     public String getNumeroCadastro() {

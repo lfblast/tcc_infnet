@@ -1,6 +1,7 @@
 package br.edu.infnet.engjava.projetotcc.modelo;
 
 import java.time.LocalDate;
+import javax.persistence.Column;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,14 +10,24 @@ import javax.persistence.Id;
 
 @Entity
 public class Avaliacao {
-    
-	@Id
+   
+    @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id;
+    
+    @Column(name="codigo_avaliacao", nullable=false)
     private String codigoAvaliacao;
+    
+    @Column(name="objetivo_avaliacao")
     private String objetivoAvaliacao;
+        
+    @Column(name="inicio_avaliacao", nullable=false)
     private LocalDate inicioAvaliacao;
+    
+    @Column(name="termino_avaliacao", nullable=false)
     private LocalDate terminoAvaliacao;
+    
+    
     private Aluno respondente;
     private Turma turma;
     private Questionario questionario;
