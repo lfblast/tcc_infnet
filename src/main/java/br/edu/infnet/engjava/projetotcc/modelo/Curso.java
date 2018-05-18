@@ -20,7 +20,7 @@ public class Curso {
     @Column(name="codigo", nullable=false)
     private String codigoCurso;
     
-    @Column(name="codigo", nullable=false)
+    @Column(name="nome", nullable=false)
     private String nomeCurso;
 
     @OneToMany(mappedBy = "curso")

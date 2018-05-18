@@ -1,12 +1,16 @@
 package br.edu.infnet.engjava.projetotcc.modelo;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Questionario {
@@ -18,6 +22,12 @@ public class Questionario {
     @Column(name="identificador")
     private String identificador;
     
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+        name = "questionario_questao", 
+        joinColumns = { @JoinColumn(name = "questionario_id") }, 
+        inverseJoinColumns = { @JoinColumn(name = "questao_id") }
+    )
     private List<Questao> questoes;
 
     public Questionario() {

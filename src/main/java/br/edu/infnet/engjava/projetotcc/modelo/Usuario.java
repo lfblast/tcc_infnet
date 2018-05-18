@@ -7,11 +7,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name = "usuario")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Usuario {
 
     @Id
@@ -26,6 +29,9 @@ public class Usuario {
     
     private String email;    
     
+    @OneToOne
+    @JoinColumn(name = "credencial")
+    @Cascade(value=org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private Credencial credencial;
 
     public Usuario() {

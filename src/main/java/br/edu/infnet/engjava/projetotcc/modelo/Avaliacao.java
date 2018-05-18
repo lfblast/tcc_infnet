@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import org.hibernate.annotations.Cascade;
 
 @Entity
 public class Avaliacao {
@@ -27,10 +30,24 @@ public class Avaliacao {
     @Column(name="termino_avaliacao", nullable=false)
     private LocalDate terminoAvaliacao;
     
-    
+    @OneToOne
+    @JoinColumn(name = "aluno_respondente")
+    @Cascade(value=org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private Aluno respondente;
+    
+    @OneToOne
+    @JoinColumn(name = "turma")
+    @Cascade(value=org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private Turma turma;
+    
+    @OneToOne
+    @JoinColumn(name = "questionario")
+    @Cascade(value=org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private Questionario questionario;
+    
+    @OneToOne
+    @JoinColumn(name = "email_abertura")
+    @Cascade(value=org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private EmailAbertura emailAbertura;
     
     

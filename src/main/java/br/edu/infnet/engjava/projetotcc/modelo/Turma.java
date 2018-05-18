@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Turma {
@@ -25,7 +28,11 @@ public class Turma {
     @Column(name="periodo_fim", nullable=false)
     private LocalDate periodoFim;
     
+    @ManyToOne
+    @JoinColumn(name = "modulo_id")
     private Modulo modulo;
+    
+    @OneToMany(mappedBy = "turma")
     private List<Aluno> alunos;
 
     public Turma() {

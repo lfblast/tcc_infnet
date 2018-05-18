@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 @Entity
 public class Administrador extends Usuario {
     
-    @Column(name="numero_cadastro", length=8, nullable=false)
+    @Column(name="numero_cadastro", length=8)
     private String numeroCadastro;
 
     public String getNumeroCadastro() {

@@ -1,12 +1,14 @@
 package br.edu.infnet.engjava.projetotcc.modelo;
 
 import java.time.LocalDate;
+import java.util.List;
 import javax.persistence.Column;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Questao {
@@ -23,6 +25,9 @@ public class Questao {
     
     @Column(name="data_criacao")
     private LocalDate dataCriacao;
+    
+    @ManyToMany(mappedBy = "questoes")
+    private List<Questionario> questionarios;
 
     public Questao() {
 
@@ -66,5 +71,13 @@ public class Questao {
 
     public void setDataCriacao(LocalDate dataCriacao) {
         this.dataCriacao = dataCriacao;
+    }
+
+    public List<Questionario> getQuestionarios() {
+        return questionarios;
+    }
+
+    public void setQuestionarios(List<Questionario> questionarios) {
+        this.questionarios = questionarios;
     }
 }

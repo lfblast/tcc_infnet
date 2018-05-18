@@ -1,5 +1,7 @@
 package br.edu.infnet.engjava.projetotcc.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Modulo {
@@ -24,6 +27,9 @@ public class Modulo {
     @ManyToOne
     @JoinColumn(name = "bloco_id")
     private Bloco bloco;
+    
+    @OneToMany(mappedBy = "modulo")
+    private List<Turma> turmas = new ArrayList<>();
 
     public Modulo() {
 
@@ -66,5 +72,13 @@ public class Modulo {
 
     public void setBloco(Bloco bloco) {
         this.bloco = bloco;
+    }
+
+    public List<Turma> getTurmas() {
+        return turmas;
+    }
+
+    public void setTurmas(List<Turma> turmas) {
+        this.turmas = turmas;
     }
 }
