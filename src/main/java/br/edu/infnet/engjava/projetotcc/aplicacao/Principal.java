@@ -1,17 +1,6 @@
 package br.edu.infnet.engjava.projetotcc.aplicacao;
 
-import br.edu.infnet.engjava.projetotcc.modelo.Administrador;
-import br.edu.infnet.engjava.projetotcc.modelo.Aluno;
-import br.edu.infnet.engjava.projetotcc.modelo.Avaliacao;
-import br.edu.infnet.engjava.projetotcc.modelo.Bloco;
-import br.edu.infnet.engjava.projetotcc.modelo.Credencial;
-import br.edu.infnet.engjava.projetotcc.modelo.Curso;
-import br.edu.infnet.engjava.projetotcc.modelo.EmailAbertura;
-import br.edu.infnet.engjava.projetotcc.modelo.Modulo;
-import br.edu.infnet.engjava.projetotcc.modelo.Questao;
-import br.edu.infnet.engjava.projetotcc.modelo.Questionario;
-import br.edu.infnet.engjava.projetotcc.modelo.Turma;
-import br.edu.infnet.engjava.projetotcc.modelo.Usuario;
+import br.edu.infnet.engjava.projetotcc.modelo.*;
 import java.util.Properties;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
