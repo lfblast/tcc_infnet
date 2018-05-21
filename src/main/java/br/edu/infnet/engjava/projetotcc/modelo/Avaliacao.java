@@ -1,6 +1,7 @@
 package br.edu.infnet.engjava.projetotcc.modelo;
 
 import java.time.LocalDate;
+import java.util.List;
 import javax.persistence.Column;
 
 import javax.persistence.Entity;
@@ -8,10 +9,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 
 @Entity
+@Table(name = "avaliacao")
 public class Avaliacao {
    
     @Id
@@ -30,10 +34,11 @@ public class Avaliacao {
     @Column(name="termino_avaliacao", nullable=false)
     private LocalDate terminoAvaliacao;
     
-    @OneToOne
-    @JoinColumn(name = "aluno_respondente")
-    @Cascade(value=org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    private Aluno respondente;
+    @Column(name="observacoes", nullable=true)
+    private String observacoes;
+    
+    @OneToMany(mappedBy = "avaliacao")
+    private List<Resposta> respostas;
     
     @OneToOne
     @JoinColumn(name = "turma")
@@ -55,22 +60,20 @@ public class Avaliacao {
     	
     }
 
-    public Avaliacao(long id, String codigoAvaliacao, String objetivoAvaliacao, LocalDate inicioAvaliacao,
-			LocalDate terminoAvaliacao, Aluno respondente, Turma turma, Questionario questionario,
-			EmailAbertura emailAbertura) {
-		super();
-		this.id = id;
-		this.codigoAvaliacao = codigoAvaliacao;
-		this.objetivoAvaliacao = objetivoAvaliacao;
-		this.inicioAvaliacao = inicioAvaliacao;
-		this.terminoAvaliacao = terminoAvaliacao;
-		this.respondente = respondente;
-		this.turma = turma;
-		this.questionario = questionario;
-		this.emailAbertura = emailAbertura;
-	}
+    public Avaliacao(long id, String codigoAvaliacao, String objetivoAvaliacao, LocalDate inicioAvaliacao, LocalDate terminoAvaliacao, String observacoes, List<Resposta> respostas, Turma turma, Questionario questionario, EmailAbertura emailAbertura) {
+        this.id = id;
+        this.codigoAvaliacao = codigoAvaliacao;
+        this.objetivoAvaliacao = objetivoAvaliacao;
+        this.inicioAvaliacao = inicioAvaliacao;
+        this.terminoAvaliacao = terminoAvaliacao;
+        this.observacoes = observacoes;
+        this.respostas = respostas;
+        this.turma = turma;
+        this.questionario = questionario;
+        this.emailAbertura = emailAbertura;
+    }
 
-	public long getId() {
+    public long getId() {
         return id;
     }
 
@@ -110,14 +113,22 @@ public class Avaliacao {
         this.terminoAvaliacao = terminoAvaliacao;
     }
 
-    public Aluno getRespondente() {
-        return respondente;
+    public String getObservacoes() {
+        return observacoes;
     }
 
-    public void setRespondente(Aluno respondente) {
-        this.respondente = respondente;
+    public void setObservacoes(String observacoes) {
+        this.observacoes = observacoes;
     }
 
+    public List<Resposta> getRespostas() {
+        return respostas;
+    }
+
+    public void setRespostas(List<Resposta> respostas) {
+        this.respostas = respostas;
+    }
+    
     public Turma getTurma() {
         return turma;
     }

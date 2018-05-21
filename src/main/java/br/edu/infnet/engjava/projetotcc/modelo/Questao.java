@@ -9,8 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "questao")
 public class Questao {
 
     @Id
@@ -19,9 +21,6 @@ public class Questao {
     
     @Column(name="descricao", nullable=false)
     private String descricaoQuestao;
-    
-    @Column(name="grau_conformidade_resposta", nullable=false)
-    private int grauConformidadeResposta;
     
     @Column(name="data_criacao")
     private LocalDate dataCriacao;
@@ -33,14 +32,13 @@ public class Questao {
 
     }
 
-    public Questao(long id, String descricaoQuestao, int grauConformidadeResposta, LocalDate dataCriacao) {
-        super();
+    public Questao(long id, String descricaoQuestao, LocalDate dataCriacao, List<Questionario> questionarios) {
         this.id = id;
         this.descricaoQuestao = descricaoQuestao;
-        this.grauConformidadeResposta = grauConformidadeResposta;
         this.dataCriacao = dataCriacao;
+        this.questionarios = questionarios;
     }
-
+    
     public long getId() {
         return id;
     }
@@ -55,14 +53,6 @@ public class Questao {
 
     public void setDescricaoQuestao(String descricaoQuestao) {
         this.descricaoQuestao = descricaoQuestao;
-    }
-
-    public int getGrauConformidadeResposta() {
-        return grauConformidadeResposta;
-    }
-
-    public void setGrauConformidadeResposta(int grauConformidadeResposta) {
-        this.grauConformidadeResposta = grauConformidadeResposta;
     }
 
     public LocalDate getDataCriacao() {

@@ -7,15 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import org.hibernate.annotations.Cascade;
 
 @Entity
-@Table(name = "usuario")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Usuario {
+@Table(name = "pessoa")
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Pessoa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,18 +24,16 @@ public class Usuario {
     @Column(nullable=false)
     private String cpf;
     
-    private String email;    
+    private String email;
     
-    @OneToOne
-    @JoinColumn(name = "credencial")
-    @Cascade(value=org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    private Credencial credencial;
+    @Column(nullable=false)
+    private String genero;
 
-    public Usuario() {
+    public Pessoa() {
 
     }
 
-    public Usuario(long id, String nome, String cpf, String email) {
+    public Pessoa(long id, String nome, String cpf, String email) {
         super();
         this.id = id;
         this.nome = nome;
@@ -76,13 +71,13 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
+    } 
+
+    public String getGenero() {
+        return genero;
     }
 
-    public Credencial getCredencial() {
-        return credencial;
-    }
-
-    public void setCredencial(Credencial credencial) {
-        this.credencial = credencial;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 }

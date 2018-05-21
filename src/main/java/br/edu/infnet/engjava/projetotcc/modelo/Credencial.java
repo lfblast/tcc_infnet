@@ -3,8 +3,10 @@ package br.edu.infnet.engjava.projetotcc.modelo;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "credencial")
 public class Credencial {
     
     @Id
@@ -16,6 +18,15 @@ public class Credencial {
     @Column(nullable=false)
     private String senha;
 
+    public Credencial() {
+    }
+
+    public Credencial(long id, String login, String senha) {
+        this.id = id;
+        this.login = login;
+        this.senha = senha;
+    }
+    
     public long getId() {
         return id;
     }

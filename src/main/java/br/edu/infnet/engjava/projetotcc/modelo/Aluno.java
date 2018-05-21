@@ -4,34 +4,32 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
-public class Aluno extends Usuario {
+@Table(name = "aluno")
+public class Aluno extends Pessoa {
     
     @Column(length=8)
     private String matricula;
     
-    @Column(nullable=false)
-    private String genero;
-    
     @ManyToOne
-    @JoinColumn(name = "turma_id")
+    @JoinColumn(name = "turma")
     private Turma turma;
 
+    public Aluno() {
+    }
+
+    public Aluno(long id, String nome, String cpf, String email) {
+        super(id, nome, cpf, email);
+    }
+    
     public String getMatricula() {
         return matricula;
     }
 
     public void setMatricula(String matricula) {
         this.matricula = matricula;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
     }
 
     public Turma getTurma() {

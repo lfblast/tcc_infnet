@@ -11,8 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 
 @Entity
+@Table(name = "turma")
 public class Turma {
 
     @Id
@@ -34,6 +38,10 @@ public class Turma {
     
     @OneToMany(mappedBy = "turma")
     private List<Aluno> alunos;
+    
+    @OneToOne
+    @JoinColumn (name="professor_titular_id")
+    private Professor professor;
 
     public Turma() {
 
@@ -96,5 +104,13 @@ public class Turma {
 
     public void setModulo(Modulo modulo) {
         this.modulo = modulo;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
     }
 }

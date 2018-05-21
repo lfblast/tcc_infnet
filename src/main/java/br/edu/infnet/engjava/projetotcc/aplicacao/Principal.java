@@ -49,7 +49,9 @@ public class Principal {
             configuration.addAnnotatedClass(Questao.class);
             configuration.addAnnotatedClass(Questionario.class);
             configuration.addAnnotatedClass(Turma.class);
-            configuration.addAnnotatedClass(Usuario.class);
+            configuration.addAnnotatedClass(Pessoa.class);
+            configuration.addAnnotatedClass(Professor.class);
+            configuration.addAnnotatedClass(Resposta.class);
             
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
             SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
