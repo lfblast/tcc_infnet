@@ -20,8 +20,10 @@ public class Aluno extends Pessoa {
     public Aluno() {
     }
 
-    public Aluno(long id, String nome, String cpf, String email) {
+    public Aluno(String matricula, Turma turma, long id, String nome, String cpf, String email) {
         super(id, nome, cpf, email);
+        this.matricula = matricula;
+        this.turma = turma;
     }
     
     public String getMatricula() {

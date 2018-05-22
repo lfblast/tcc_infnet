@@ -1,7 +1,8 @@
 package br.edu.infnet.engjava.projetotcc.modelo;
 
+import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -10,14 +11,16 @@ public class Professor extends Pessoa {
     
     private String codigoCadastro;
     
-    @OneToOne (mappedBy="professor")
-    private Turma turma;
+    @OneToMany(mappedBy = "professor")
+    private List<Turma> turma;
 
     public Professor() {
     }
 
-    public Professor(long id, String nome, String cpf, String email) {
+    public Professor(String codigoCadastro, List<Turma> turma, long id, String nome, String cpf, String email) {
         super(id, nome, cpf, email);
+        this.codigoCadastro = codigoCadastro;
+        this.turma = turma;
     }
     
     public String getCodigoCadastro() {
@@ -28,11 +31,11 @@ public class Professor extends Pessoa {
         this.codigoCadastro = codigoCadastro;
     }
 
-    public Turma getTurma() {
+    public List<Turma> getTurma() {
         return turma;
     }
 
-    public void setTurma(Turma turma) {
+    public void setTurma(List<Turma> turma) {
         this.turma = turma;
-    }    
+    }
 }

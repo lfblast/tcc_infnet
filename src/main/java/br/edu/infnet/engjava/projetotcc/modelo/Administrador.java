@@ -5,10 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name = "administrador")
@@ -21,20 +18,22 @@ public class Administrador {
     @Column(name="numero_cadastro", length=8)
     private String numeroCadastro;
     
-    @OneToOne
-    @JoinColumn(name = "credencial_id")
-    @Cascade(value=org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    private Credencial credencial;
+    @Column(nullable=false)    
+    private String login;
+    
+    @Column(nullable=false)
+    private String senha;
 
     public Administrador() {
     }
 
-    public Administrador(long id, String numeroCadastro, Credencial credencial) {
+    public Administrador(long id, String numeroCadastro, String login, String senha) {
         this.id = id;
         this.numeroCadastro = numeroCadastro;
-        this.credencial = credencial;
+        this.login = login;
+        this.senha = senha;
     }
-    
+        
     public long getId() {
         return id;
     }
@@ -51,11 +50,19 @@ public class Administrador {
         this.numeroCadastro = numeroCadastro;
     }
 
-    public Credencial getCredencial() {
-        return credencial;
+    public String getLogin() {
+        return login;
     }
 
-    public void setCredencial(Credencial credencial) {
-        this.credencial = credencial;
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }

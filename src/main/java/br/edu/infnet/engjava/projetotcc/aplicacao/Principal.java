@@ -42,7 +42,6 @@ public class Principal {
             configuration.addAnnotatedClass(Aluno.class);
             configuration.addAnnotatedClass(Avaliacao.class);
             configuration.addAnnotatedClass(Bloco.class);
-            configuration.addAnnotatedClass(Credencial.class);
             configuration.addAnnotatedClass(Curso.class);
             configuration.addAnnotatedClass(EmailAbertura.class);
             configuration.addAnnotatedClass(Modulo.class);
