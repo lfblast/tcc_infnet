@@ -22,9 +22,6 @@ public class Turma {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;    
     
-    @Column(name="professor_titular", nullable=false)
-    private int professorTitular;
-    
     @Column(name="periodo_inicio", nullable=false)
     private LocalDate periodoInicio;
     
@@ -46,31 +43,21 @@ public class Turma {
 
     }
 
-    public Turma(long id, Modulo modulo, int professorTitular, LocalDate periodoInicio, LocalDate periodoFim,
-            List<Aluno> alunos) {
-        super();
+    public Turma(long id, LocalDate periodoInicio, LocalDate periodoFim, Modulo modulo, List<Aluno> alunos, Professor professor) {
         this.id = id;
-        this.modulo = modulo;
-        this.professorTitular = professorTitular;
         this.periodoInicio = periodoInicio;
         this.periodoFim = periodoFim;
+        this.modulo = modulo;
         this.alunos = alunos;
+        this.professor = professor;
     }
-
+    
     public long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public int getProfessorTitular() {
-        return professorTitular;
-    }
-
-    public void setProfessorTitular(int professorTitular) {
-        this.professorTitular = professorTitular;
     }
 
     public LocalDate getPeriodoInicio() {
