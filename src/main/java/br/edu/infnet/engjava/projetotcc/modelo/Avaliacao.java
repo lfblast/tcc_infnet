@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -40,18 +41,16 @@ public class Avaliacao {
     @OneToMany(mappedBy = "avaliacao")
     private List<Resposta> respostas;
     
-    @OneToOne
-    @JoinColumn(name = "turma")
-    @Cascade(value=org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @ManyToOne
+    @JoinColumn (name="turma_id")
     private Turma turma;
     
-    @OneToOne
-    @JoinColumn(name = "questionario")
-    @Cascade(value=org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @ManyToOne
+    @JoinColumn(name = "questionario_id")
     private Questionario questionario;
     
     @OneToOne
-    @JoinColumn(name = "email_abertura")
+    @JoinColumn(name = "email_abertura_id")
     @Cascade(value=org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private EmailAbertura emailAbertura;
     

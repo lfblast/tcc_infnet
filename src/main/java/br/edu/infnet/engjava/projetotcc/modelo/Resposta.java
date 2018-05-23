@@ -25,14 +25,12 @@ public class Resposta {
     @JoinColumn(name = "avaliacao_id")
     private Avaliacao avaliacao;
     
-    @OneToOne
-    @JoinColumn(name = "questao_id")
-    @Cascade(value=org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @ManyToOne
+    @JoinColumn(name = "questao_id")    
     private Questao questao;
     
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "aluno_id")
-    @Cascade(value=org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private Aluno aluno;
     
     @Column(name="grau_conformidade")

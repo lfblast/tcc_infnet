@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,17 +28,21 @@ public class Questao {
     
     @ManyToMany(mappedBy = "questoes")
     private List<Questionario> questionarios;
+    
+    @OneToMany(mappedBy = "questao")
+    private List<Resposta> respostas;
 
     public Questao() {
 
     }
 
-    public Questao(long id, String descricaoQuestao, LocalDate dataCriacao, List<Questionario> questionarios) {
+    public Questao(long id, String descricaoQuestao, LocalDate dataCriacao, List<Questionario> questionarios, List<Resposta> respostas) {
         this.id = id;
         this.descricaoQuestao = descricaoQuestao;
         this.dataCriacao = dataCriacao;
         this.questionarios = questionarios;
-    }
+        this.respostas = respostas;
+    }   
     
     public long getId() {
         return id;
@@ -69,5 +74,13 @@ public class Questao {
 
     public void setQuestionarios(List<Questionario> questionarios) {
         this.questionarios = questionarios;
+    }
+
+    public List<Resposta> getRespostas() {
+        return respostas;
+    }
+
+    public void setRespostas(List<Resposta> respostas) {
+        this.respostas = respostas;
     }
 }

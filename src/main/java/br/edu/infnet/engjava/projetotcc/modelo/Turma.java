@@ -21,7 +21,7 @@ public class Turma {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;    
-    
+
     @Column(name="periodo_inicio", nullable=false)
     private LocalDate periodoInicio;
     
@@ -38,19 +38,23 @@ public class Turma {
     @ManyToOne
     @JoinColumn (name="professor_titular_id")
     private Professor professor;
+    
+    @OneToMany(mappedBy = "turma")
+    private List<Avaliacao> avaliacoes;
 
     public Turma() {
 
     }
 
-    public Turma(long id, LocalDate periodoInicio, LocalDate periodoFim, Modulo modulo, List<Aluno> alunos, Professor professor) {
+    public Turma(long id, LocalDate periodoInicio, LocalDate periodoFim, Modulo modulo, List<Aluno> alunos, Professor professor, List<Avaliacao> avaliacoes) {
         this.id = id;
         this.periodoInicio = periodoInicio;
         this.periodoFim = periodoFim;
         this.modulo = modulo;
         this.alunos = alunos;
         this.professor = professor;
-    }
+        this.avaliacoes = avaliacoes;
+    }      
     
     public long getId() {
         return id;
@@ -98,5 +102,13 @@ public class Turma {
 
     public void setProfessor(Professor professor) {
         this.professor = professor;
+    }
+
+    public List<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
+    }
+
+    public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+        this.avaliacoes = avaliacoes;
     }
 }
