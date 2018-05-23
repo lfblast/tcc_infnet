@@ -41,17 +41,17 @@ public class Avaliacao {
     private List<Resposta> respostas;
     
     @OneToOne
-    @JoinColumn(name = "turma")
+    @JoinColumn(name = "turma_id")
     @Cascade(value=org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private Turma turma;
     
     @OneToOne
-    @JoinColumn(name = "questionario")
+    @JoinColumn(name = "questionario_id")
     @Cascade(value=org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private Questionario questionario;
     
     @OneToOne
-    @JoinColumn(name = "email_abertura")
+    @JoinColumn(name = "email_abertura_id")
     @Cascade(value=org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private EmailAbertura emailAbertura;
     
