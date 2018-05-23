@@ -15,9 +15,6 @@ public class Administrador {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;    
     
-    @Column(name="numero_cadastro", length=8)
-    private String numeroCadastro;
-    
     @Column(nullable=false)    
     private String login;
     
@@ -27,9 +24,8 @@ public class Administrador {
     public Administrador() {
     }
 
-    public Administrador(long id, String numeroCadastro, String login, String senha) {
+    public Administrador(long id, String login, String senha) {
         this.id = id;
-        this.numeroCadastro = numeroCadastro;
         this.login = login;
         this.senha = senha;
     }
@@ -40,14 +36,6 @@ public class Administrador {
 
     public void setId(long id) {
         this.id = id;
-    }
-    
-    public String getNumeroCadastro() {
-        return numeroCadastro;
-    }
-
-    public void setNumeroCadastro(String numeroCadastro) {
-        this.numeroCadastro = numeroCadastro;
     }
 
     public String getLogin() {
