@@ -16,7 +16,7 @@ public class Aluno extends Pessoa {
     private String matricula;
     
     @ManyToOne
-    @JoinColumn(name = "turma")
+    @JoinColumn(name = "turma_id")
     private Turma turma;
     
     @OneToMany(mappedBy = "aluno")
